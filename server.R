@@ -42,6 +42,9 @@ shinyServer(function(input, output, session) {
       nchar(input$login_string) > 3, "Please provide a login longer than 3 char"
     ))
     
+    hide(id = "login")
+    hide(id = "login_string")
+    
     input$login_string
   })
   
@@ -116,8 +119,8 @@ shinyServer(function(input, output, session) {
   })
   
   output$vote_tally <- renderText({
-    indexes <- filtered_votes() %>% pull(index)
-    distinct <- n_distinct(indexes)
+    indexes <- filtered_votes() %>% pull(index) %>% na.omit()
+    distinct <- n_distinct(indexes) 
     
     glue(
       "{distinct} / {n_distinct(dat$index)} abstracts"
@@ -138,7 +141,7 @@ shinyServer(function(input, output, session) {
       last_vote <- filtered_to_this_abstract %>% arrange(desc(timestamp)) %>% slice(1) %>%
         mutate(
           last_vote  = glue(
-            'You last voted to {vote} this abstract'
+            'You have voted to {vote} this abstract'
             )
         ) %>% pull(last_vote)
     }

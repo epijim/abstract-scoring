@@ -1,0 +1,14 @@
+name: voting-app
+title: voting-app
+username:
+account: rinpharma
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 9505699
+bundleId: 7496482
+url: https://rinpharma.shinyapps.io/voting-app/
+when: 1690320236.962
+lastSyncTime: 1690320236.96201
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: data.rds

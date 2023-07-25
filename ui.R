@@ -1,6 +1,9 @@
 dashboardPage(
   dark = NULL,
-  dashboardHeader(title = "Voting app"),
+  dashboardHeader(
+    title = "Voting app",
+    useShinyjs()
+    ),
   dashboardSidebar(
     skin = "light",
     textInput(
@@ -27,6 +30,8 @@ dashboardPage(
       
       box(
         title = "Score abstract",
+        textOutput("abstract_text_latest"),
+        hr(),
         radioButtons(
           "decide",
           label = p("Rating for this abstract"),
@@ -47,14 +52,8 @@ dashboardPage(
             icon = icon("floppy-disk")
           ),
         br(),
-        helpText("You must login via the sidebar to have votes recorded")
-      ),
-      box(
-        title = "Current rating for this abstract",
-        textOutput("abstract_text_latest")
-      ),
-      box(
-        title = "Navigate abstracts",
+        helpText("You must login via the sidebar to have votes recorded"),
+        hr(),
         actionButton("previous_abstract", "Previous", icon = icon("arrow-left")),
         actionButton("next_abstract", "Next", icon = icon("arrow-right"))
       )

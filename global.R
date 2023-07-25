@@ -7,6 +7,7 @@ library(shiny)
 library(fresh)
 library(bs4Dash)
 library(googlesheets4)
+library(shinyjs)
 
 enableBookmarking(store = "disable")
 

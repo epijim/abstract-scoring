@@ -1,6 +1,8 @@
 dashboardPage(
+  dark = NULL,
   dashboardHeader(title = "Voting app"),
   dashboardSidebar(
+    skin = "light",
     textInput(
       inputId = "login_string",
       label = "Please provide a unique identifier for your scoring",
@@ -9,7 +11,11 @@ dashboardPage(
     actionButton("login", "Login"),
     hr(),
     p("Your votes are being recorded as:"),
-    textOutput("login_name")
+    textOutput("login_name"),br(),
+    p("Login using the same id to continue voting or amend votes"),
+    hr(),
+    p("Your current review progress is:"),
+    textOutput("vote_tally")
   ),
   dashboardBody(
     # Boxes need to be put in a row (or column)
@@ -35,24 +41,17 @@ dashboardPage(
             value = "",
             placeholder = "optional"
           ),
-        actionButton(
-          "submit_rating",
-          label = "Submit rating",
-          icon = icon("floppy-disk")
-        )
-      #   #hr(),
-      #   #textOutput("decision_char"),
-      #   hr(),
-      #   appButton(
-      #     inputId = "decision_confirmed",
-      #     label = textOutput("decision_char"), 
-      #     icon = icon("check-to-slot"), 
-      #     color = "warning"
-      #     #dashboardBadge(textOutput("decision_char"), color = "primary")
+          actionButton(
+            "submit_rating",
+            label = "Submit rating",
+            icon = icon("floppy-disk")
+          ),
+        br(),
+        helpText("You must login via the sidebar to have votes recorded")
       ),
       box(
         title = "Current rating for this abstract",
-        p("placeholder")
+        textOutput("abstract_text_latest")
       ),
       box(
         title = "Navigate abstracts",
